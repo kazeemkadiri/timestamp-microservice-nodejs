@@ -10,5 +10,8 @@
     "unix-utc-timestamp-generator"
   ],
   "author": "Kazeem Kadiri",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
