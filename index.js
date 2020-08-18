@@ -5,12 +5,17 @@ const app = express();
 app.get("/api/timestamp/:date_string?", function(req, res){
   const dateString = req.params.date_string;
   
-  const dateResult = new Date(dateString);
-//  console.log(dateString);
-
-  if(dateResult == null){
-    res.json({error: "Invalid Date"});
+  if(/^\d{4}-\d{2}-\d{2}$/.test(dateString)){
+  
+    const date = new Date( dateString );
+    res.json({unix:date.getTime(), utc:date.toUTCString()});
   }    
+
+  //Datestring like 130990039908
+  if(/^\d+$/.test(dateString)){
+    const date= new Date(parseInt(dateString));
+    res.json({unix: date.getTime(), utc: date.toUTCString()});
+  }
 
   //If date is successfully parsed
   
